@@ -23,6 +23,7 @@ void iterating_over_collections(rcComm_t& _conn) {
 // TODO: The odstream cannot be established and the client API test failed.
 int read_and_write(rcComm_t& _conn, const std::string& irods_path, const std::string& path) {
     namespace io = irods::experimental::io;
+    load_client_api_plugins();
     io::client::default_transport xport{_conn};
     io::odstream out {xport, irods_path};
     if(!out) {
