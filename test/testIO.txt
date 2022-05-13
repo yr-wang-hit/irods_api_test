@@ -1,0 +1,27 @@
+The best documentation for understanding the Rule Engine Plugin Framework is the source. The following links should help with where to start:
+https://github.com/irods/irods/blob/313db31d74080b2a683d9177e374eb847514452c/server/core/src/rsApiHandler.cpp#L38
+This is where API requests are serviced
+https://github.com/irods/irods/blob/313db31d74080b2a683d9177e374eb847514452c/lib/core/include/apiHandler.hpp#L120
+Defines the order of execution for pre, post, except, finally PEPs and the actual API operation (e.g. rsDataObjPut())
+https://github.com/irods/irods/blob/313db31d74080b2a683d9177e374eb847514452c/server/re/include/irods_re_plugin.hpp#L26-L55
+Important notes which document the general Rule Engine behavior
+https://github.com/irods/irods/blob/4-2-stable/server/re/include/irods_re_plugin.hpp
+https://github.com/irods/irods/blob/313db31d74080b2a683d9177e374eb847514452c/server/re/include/irods_re_plugin.hpp#L459
+The continuation logic for PEPs
+https://github.com/irods/irods/blob/313db31d74080b2a683d9177e374eb847514452c/server/re/include/irods_re_plugin.hpp#L660
+The continuation logic for irule invocations
+https://github.com/irods/irods/blob/313db31d74080b2a683d9177e374eb847514452c/server/re/include/irods_re_plugin.hpp#L687
+The continuation logic for delay()/remote() rules
+Other sources:
+https://docs.irods.org/4.2.11/system_overview/process_model/
+https://docs.irods.org/4.2.11/plugins/pluggable_rule_engine/
+https://docs.irods.org/4.2.11/doxygen/
+https://slides.com/irods
+If you're interested in implementing your own Rule Engine Plugin, I've listed two examples below. The metadata_guard is a lot simpler than logical quotas. They are both implemented using C++, but there's no reason you couldn't do the same thing using Python or any other language.
+https://github.com/irods/irods_rule_engine_plugin_metadata_guard/tree/4-2-stable
+https://github.com/irods/irods_rule_engine_plugin_logical_quotas/tree/4-2-stable
+Thanks,
+
+Kory Draughn
+Chief Technologist
+iRODS Consortium
