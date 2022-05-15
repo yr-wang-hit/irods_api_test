@@ -63,5 +63,14 @@ int upload_add_metadata(rodsEnv& env, rcComm_t& _conn, const std::string& path) 
     return 0;
 }
 
+std::string get_checksum(rcComm_t& _conn, const std::string& irods_path) {
+    char* checksum = nullptr;
+    DataObjInp doi{};
+    std::strncpy(doi.objPath, irods_path.c_str(), MAX_NAME_LEN);
+    addKeyVal(&doi.condInput,FORCE_CHKSUM_KW, "");
+    rcDataObjChksum(&_conn, &doi, &checksum);
+    std::cout << "The checksum is " << checksum << std::endl;
+    return std::string{checksum};
+}
 
 

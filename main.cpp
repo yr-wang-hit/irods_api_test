@@ -23,5 +23,6 @@ int main() {
     //ad_and_write(conn, "/tempZone/home/rods/test/testIO.txt", "../test/testIO.txt");
     iterating_over_collections(conn);
     upload_add_metadata(env, conn, path);
+    get_checksum(conn, "/tempZone/home/rods/unit_testing_sandbox/testIO.txt");
     return 0;
 }
