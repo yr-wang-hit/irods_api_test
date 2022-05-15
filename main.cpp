@@ -1,6 +1,5 @@
 #include <iostream>
 #include "irodsClientApiTest.h"
-//#include <openssl/md5.h>
 
 int main() {
     rodsEnv env;
@@ -8,6 +7,7 @@ int main() {
         std::cerr << "environment file not found." << std::endl;
         return 2;
     }
+
     const int connect_pool_size = 4;
     const int refresh_time_in_secs = 600;
 
@@ -16,8 +16,12 @@ int main() {
 
     auto conn = pool.get_connection();
 
+    load_client_api_plugins();
+
     print_all_resource_names(conn);
-    read_and_write(conn, "/tempZone/home/rods/a.txt", "../test/testIO.txt");
+    const std::string path = "../test/testIO.txt";
+    //ad_and_write(conn, "/tempZone/home/rods/test/testIO.txt", "../test/testIO.txt");
     iterating_over_collections(conn);
+    upload_add_metadata(env, conn, path);
     return 0;
 }

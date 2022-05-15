@@ -13,8 +13,10 @@
 
 
 #include <iostream>
+std::string concat_path(const std::string& path, const std::string& irods_path_base);
 void print_all_resource_names(rcComm_t& _conn);
 void iterating_over_collections(rcComm_t& _conn);
 int read_and_write(rcComm_t& _conn, const std::string& irods_path, const std::string& path);
+int upload_add_metadata(rodsEnv& env, rcComm_t& _conn, const std::string& path);
 
 #endif //DATAHUB_IRODSCLIENTAPITEST_H
